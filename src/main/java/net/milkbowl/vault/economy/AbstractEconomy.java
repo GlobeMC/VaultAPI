@@ -2,86 +2,137 @@ package net.milkbowl.vault.economy;
 
 import org.bukkit.OfflinePlayer;
 
-@SuppressWarnings("deprecation")
+import java.util.UUID;
+
 public abstract class AbstractEconomy implements Economy {
 
-	@Override
-	public boolean hasAccount(OfflinePlayer player) {
-		if (player.getName() == null) return false;
-		return hasAccount(player.getName());
-	}
+    @Override
+    public double getBalance(String accountHolder) {
+        return getBalance(accountHolder);
+    }
 
-	@Override
-	public boolean hasAccount(OfflinePlayer player, String worldName) {
-		if (player.getName() == null) return false;
-		return hasAccount(player.getName(), worldName);
-	}
+    @Override
+    public double getBalance(UUID accountHolder) {
+        return getBalance(accountHolder);
+    }
 
-	@Override
-	public double getBalance(OfflinePlayer player) {
-		return getBalance(player.getName());
-	}
+    @Override
+    public double getBalance(OfflinePlayer accountHolder) {
+        return getBalance(accountHolder.getUniqueId());
+    }
 
-	@Override
-	public double getBalance(OfflinePlayer player, String world) {
-		return getBalance(player.getName(), world);
-	}
+    @Override
+    public boolean has(String accountHolder, double amount) {
+        return has(accountHolder, amount);
+    }
 
-	@Override
-	public boolean has(OfflinePlayer player, double amount) {
-		if (player.getName() == null) return false;
-		return has(player.getName(), amount);
-	}
+    @Override
+    public boolean has(UUID accountHolder, double amount) {
+        return has(accountHolder, amount);
+    }
 
-	@Override
-	public boolean has(OfflinePlayer player, String worldName, double amount) {
-		if (player.getName() == null) return false;
-		return has(player.getName(), worldName, amount);
-	}
+    @Override
+    public boolean has(OfflinePlayer accountHolder, double amount) {
+        return has(accountHolder, amount);
+    }
 
-	@Override
-	public EconomyResponse withdrawPlayer(OfflinePlayer player, double amount) {
-		return withdrawPlayer(player.getName(), amount);
-	}
+    @Override
+    public EconomyResponse withdraw(String accountHolder, double amount) {
+        return withdraw(accountHolder, amount);
+    }
 
-	@Override
-	public EconomyResponse withdrawPlayer(OfflinePlayer player, String worldName, double amount) {
-		return withdrawPlayer(player.getName(), worldName, amount);
-	}
+    @Override
+    public EconomyResponse withdraw(UUID accountHolder, double amount) {
+        return withdraw(accountHolder, amount);
+    }
 
-	@Override
-	public EconomyResponse depositPlayer(OfflinePlayer player, double amount) {
-		return depositPlayer(player.getName(), amount);
-	}
+    @Override
+    public EconomyResponse withdraw(OfflinePlayer accountHolder, double amount) {
+        return withdraw(accountHolder, amount);
+    }
 
-	@Override
-	public EconomyResponse depositPlayer(OfflinePlayer player, String worldName, double amount) {
-		return depositPlayer(player.getName(), worldName, amount);
-	}
+    @Override
+    public EconomyResponse deposit(String accountHolder, double amount) {
+        return deposit(accountHolder, amount);
+    }
 
-	@Override
-	public EconomyResponse createBank(String name, OfflinePlayer player) {
-		return createBank(name, player.getName());
-	}
+    @Override
+    public EconomyResponse deposit(UUID accountHolder, double amount) {
+        return deposit(accountHolder, amount);
+    }
 
-	@Override
-	public EconomyResponse isBankOwner(String name, OfflinePlayer player) {
-		return isBankOwner(name, player.getName());
-	}
+    @Override
+    public EconomyResponse deposit(OfflinePlayer accountHolder, double amount) {
+        return deposit(accountHolder, amount);
+    }
 
-	@Override
-	public EconomyResponse isBankMember(String name, OfflinePlayer player) {
-		return isBankMember(name, player.getName());
-	}
+    @Override
+    public EconomyResponse transfer(UUID sender, UUID receiver, double amount) {
+        return transfer(sender, receiver, amount);
+    }
 
-	@Override
-	public boolean createPlayerAccount(OfflinePlayer player) {
-		return createPlayerAccount(player.getName());
-	}
+    @Override
+    public boolean hasAccount(String accountHolder) {
+        return hasAccount(accountHolder);
+    }
 
-	@Override
-	public boolean createPlayerAccount(OfflinePlayer player, String worldName) {
-		return createPlayerAccount(player.getName(), worldName);
-	}
+    @Override
+    public boolean hasAccount(UUID accountHolder) {
+        return hasAccount(accountHolder);
+    }
 
+    @Override
+    public boolean hasAccount(OfflinePlayer accountHolder) {
+        return hasAccount(accountHolder);
+    }
+
+//    @Override
+//    public Account getAccount(String accountHolder) {
+//        return getAccount(accountHolder);
+//    }
+//
+//    @Override
+//    public Account getAccount(UUID accountHolder) {
+//        return getAccount(accountHolder);
+//    }
+//
+//    @Override
+//    public Account getAccount(OfflinePlayer accountHolder) {
+//        return getAccount(accountHolder);
+//    }
+
+    @Override
+    public boolean createAccount(String accountHolder) {
+        return createAccount(accountHolder);
+    }
+
+    @Override
+    public boolean createAccount(UUID accountHolder) {
+        return createAccount(accountHolder);
+    }
+
+    @Override
+    public boolean createAccount(UUID accountHolderId, String accountHolder) {
+        return createAccount(accountHolderId, accountHolder);
+    }
+
+    @Override
+    public boolean createAccount(OfflinePlayer accountHolder) {
+        return createAccount(accountHolder);
+    }
+
+    @Override
+    public boolean deleteAccount(String accountHolder) {
+        return deleteAccount(accountHolder);
+    }
+
+    @Override
+    public boolean deleteAccount(UUID accountHolder) {
+        return deleteAccount(accountHolder);
+    }
+
+    @Override
+    public boolean deleteAccount(OfflinePlayer accountHolder) {
+        return deleteAccount(accountHolder);
+    }
 }
